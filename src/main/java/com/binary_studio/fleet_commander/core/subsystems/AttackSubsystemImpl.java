@@ -47,11 +47,11 @@ public final class AttackSubsystemImpl implements AttackSubsystem {
     public PositiveInteger attack(Attackable target) {
         var sizeReductionModifier = (target.getSize().value() >= optimalSize.value())
                 ? 1
-                : (double)target.getSize().value() / (double)optimalSize.value();
+                : target.getSize().value() / (double)optimalSize.value();
 
         var speedReductionModifier = (target.getCurrentSpeed().value() <= optimalSpeed.value())
                 ? 1
-                : (double)optimalSize.value() / (double) (2 * target.getSize().value());
+                : optimalSize.value() / (double) (2 * target.getSize().value());
         return PositiveInteger.of((int) (baseDamage.value() * Math.min(sizeReductionModifier, speedReductionModifier)));
     }
 
