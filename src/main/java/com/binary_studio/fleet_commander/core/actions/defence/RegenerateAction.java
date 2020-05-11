@@ -13,4 +13,12 @@ public final class RegenerateAction {
 		this.hullHPRegenerated = hullRegenerated;
 	}
 
+	public RegenerateAction(RegenerateAction regenerateAction, PositiveInteger initialShieldHP,
+			PositiveInteger initialHullHP) {
+		this(PositiveInteger.of(initialShieldHP.value() < regenerateAction.shieldHPRegenerated.value()
+				? initialShieldHP.value() : regenerateAction.shieldHPRegenerated.value()),
+				PositiveInteger.of(initialHullHP.value() < regenerateAction.hullHPRegenerated.value()
+						? initialHullHP.value() : regenerateAction.hullHPRegenerated.value()));
+	}
+
 }
