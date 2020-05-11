@@ -52,7 +52,7 @@ public final class AttackSubsystemImpl implements AttackSubsystem {
         var speedReductionModifier = (target.getCurrentSpeed().value() <= optimalSpeed.value())
                 ? 1
                 : optimalSize.value() / (double) (2 * target.getSize().value());
-        return PositiveInteger.of((int) (baseDamage.value() * Math.min(sizeReductionModifier, speedReductionModifier)));
+        return PositiveInteger.of((int) Math.ceil(baseDamage.value() * Math.min(sizeReductionModifier, speedReductionModifier)));
     }
 
     @Override
