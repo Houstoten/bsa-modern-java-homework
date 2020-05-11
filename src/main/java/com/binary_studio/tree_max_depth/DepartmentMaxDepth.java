@@ -8,26 +8,22 @@ public final class DepartmentMaxDepth {
 	}
 
 	public static Integer calculateMaxDepth(Department rootDepartment) {
-		int maxDepth = 0;
-		int allMaxDepth = maxDepth;
+		int allMaxDepth = 0;
 		Deque<Optional<Department>> deq = new ArrayDeque<>();
 		deq.push(Optional.ofNullable(rootDepartment));
 		while (!deq.isEmpty()) {
 			if (deq.peek().isPresent()) {
-				maxDepth++;
 				if (!deq.peek().get().subDepartments.isEmpty()) {
 					deq.push(Optional.ofNullable(deq.peek().get().subDepartments.remove(0)));
 				}
 				else {
-					if (maxDepth > allMaxDepth) {
-						allMaxDepth = maxDepth;
+					if (deq.size() > allMaxDepth) {
+						allMaxDepth = deq.size();
 					}
-					maxDepth -= 2;
 					deq.pollFirst();
 				}
 			}
 			else {
-				maxDepth--;
 				deq.pollFirst();
 			}
 		}
