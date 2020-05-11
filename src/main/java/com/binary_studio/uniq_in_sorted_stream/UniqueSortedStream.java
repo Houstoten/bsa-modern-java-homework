@@ -9,7 +9,7 @@ public final class UniqueSortedStream {
 
 	public static <T> Stream<Row<T>> uniqueRowsSortedByPK(Stream<Row<T>> stream) {
 		Row.removeLast();
-		return stream == null ? Stream.of() : stream.filter(x -> x.getPrimaryId() != null);
+		return stream == null ? Stream.of() : stream.filter(Row::getUniq);
 	}
 
 }
