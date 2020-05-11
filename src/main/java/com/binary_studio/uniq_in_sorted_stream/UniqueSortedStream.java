@@ -5,16 +5,15 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 public final class UniqueSortedStream {
-    static Set<Long> uniqueSet = new HashSet<>();
 
-    private UniqueSortedStream() {
-    }
+	static Set<Long> uniqueSet = new HashSet<>();
 
-    public static <T> Stream<Row<T>> uniqueRowsSortedByPK(Stream<Row<T>> stream) {
-        uniqueSet.clear();
-        return stream == null ? Stream.of() : stream.map(Row::getPrimaryId)
-                .filter(x -> uniqueSet.add(x))
-                .map(Row::new);
-    }
+	private UniqueSortedStream() {
+	}
+
+	public static <T> Stream<Row<T>> uniqueRowsSortedByPK(Stream<Row<T>> stream) {
+		uniqueSet.clear();
+		return stream == null ? Stream.of() : stream.map(Row::getPrimaryId).filter(x -> uniqueSet.add(x)).map(Row::new);
+	}
 
 }

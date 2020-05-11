@@ -5,132 +5,145 @@ import com.binary_studio.fleet_commander.core.subsystems.contract.AttackSubsyste
 import com.binary_studio.fleet_commander.core.subsystems.contract.DefenciveSubsystem;
 
 public final class ShipWrapper {
-    private CombatReadyShip combatReadyShip;
-    private DockedShip dockedShip;
-    private CommonShipData data;
 
-    class CommonShipData {
-        private String name;
-        private PositiveInteger shieldHP;
-        private PositiveInteger hullHP;
-        private PositiveInteger capacitorAmount;
-        private PositiveInteger capacitorRechargeRate;
-        private PositiveInteger speed;
-        private PositiveInteger size;
-        private AttackSubsystem attackSubsystem;
-        private DefenciveSubsystem defenciveSubsystem;
-        private PositiveInteger defaultShieldHP;
-        private PositiveInteger defaultHullHP;
-        private PositiveInteger defaultCapacitorAmount;
+	private CombatReadyShip combatReadyShip;
 
+	private DockedShip dockedShip;
 
-        public CommonShipData(String name, PositiveInteger shieldHP, PositiveInteger hullHP
-                , PositiveInteger capacitorAmount, PositiveInteger capacitorRechargeRate
-                , PositiveInteger speed, PositiveInteger size, AttackSubsystem attackSubsystem
-                , DefenciveSubsystem defenciveSubsystem) {
-            this.name = name;
-            this.shieldHP = shieldHP;
-            this.hullHP = hullHP;
-            this.defaultHullHP = hullHP;
-            this.defaultShieldHP = shieldHP;
-            this.capacitorAmount = capacitorAmount;
-            this.defaultCapacitorAmount = capacitorAmount;
-            this.capacitorRechargeRate = capacitorRechargeRate;
-            this.speed = speed;
-            this.size = size;
-            this.attackSubsystem = attackSubsystem;
-            this.defenciveSubsystem = defenciveSubsystem;
-        }
+	private CommonShipData data;
 
-        public void setShieldHP(PositiveInteger shieldHP) {
-            this.shieldHP = shieldHP;
-        }
+	public DockedShip getDocked() {
+		return this.dockedShip;
+	}
 
-        public void setHullHP(PositiveInteger hullHP) {
-            this.hullHP = hullHP;
-        }
+	public CombatReadyShip getCombatReady() {
+		return this.combatReadyShip;
+	}
 
-        public void setCapacitorAmount(PositiveInteger capacitorAmount) {
-            this.capacitorAmount = capacitorAmount;
-        }
+	public CommonShipData getData() {
+		return this.data;
+	}
 
-        public PositiveInteger getDefaultCapacitorAmount() {
-            return defaultCapacitorAmount;
-        }
+	public void getBackToTheDock() {
+		this.combatReadyShip = null;
+	}
 
-        public void setSpeed(PositiveInteger speed) {
-            this.speed = speed;
-        }
+	class CommonShipData {
 
-        public PositiveInteger getDefaultShieldHP() {
-            return defaultShieldHP;
-        }
+		private String name;
 
-        public PositiveInteger getDefaultHullHP() {
-            return defaultHullHP;
-        }
+		private PositiveInteger shieldHP;
 
-        public String getName() {
-            return name;
-        }
+		private PositiveInteger hullHP;
 
-        public PositiveInteger getShieldHP() {
-            return shieldHP;
-        }
+		private PositiveInteger capacitorAmount;
 
-        public PositiveInteger getHullHP() {
-            return hullHP;
-        }
+		private PositiveInteger capacitorRechargeRate;
 
-        public PositiveInteger getCapacitorAmount() {
-            return capacitorAmount;
-        }
+		private PositiveInteger speed;
 
-        public PositiveInteger getCapacitorRechargeRate() {
-            return capacitorRechargeRate;
-        }
+		private PositiveInteger size;
 
-        public PositiveInteger getSpeed() {
-            return speed;
-        }
+		private AttackSubsystem attackSubsystem;
 
-        public PositiveInteger getSize() {
-            return size;
-        }
+		private DefenciveSubsystem defenciveSubsystem;
 
-        public AttackSubsystem getAttackSubsystem() {
-            return attackSubsystem;
-        }
+		private PositiveInteger defaultShieldHP;
 
-        public DefenciveSubsystem getDefenciveSubsystem() {
-            return defenciveSubsystem;
-        }
-    }
+		private PositiveInteger defaultHullHP;
 
-    public DockedShip getDocked() {
-        return dockedShip;
-    }
+		private PositiveInteger defaultCapacitorAmount;
 
-    public CombatReadyShip getCombatReady() {
-        return combatReadyShip;
-    }
+		CommonShipData(String name, PositiveInteger shieldHP, PositiveInteger hullHP, PositiveInteger capacitorAmount,
+				PositiveInteger capacitorRechargeRate, PositiveInteger speed, PositiveInteger size,
+				AttackSubsystem attackSubsystem, DefenciveSubsystem defenciveSubsystem) {
+			this.name = name;
+			this.shieldHP = shieldHP;
+			this.hullHP = hullHP;
+			this.defaultHullHP = hullHP;
+			this.defaultShieldHP = shieldHP;
+			this.capacitorAmount = capacitorAmount;
+			this.defaultCapacitorAmount = capacitorAmount;
+			this.capacitorRechargeRate = capacitorRechargeRate;
+			this.speed = speed;
+			this.size = size;
+			this.attackSubsystem = attackSubsystem;
+			this.defenciveSubsystem = defenciveSubsystem;
+		}
 
-    public CommonShipData getData() {
-        return data;
-    }
+		public void setShieldHP(PositiveInteger shieldHP) {
+			this.shieldHP = shieldHP;
+		}
 
-    public ShipWrapper(DockedShip dockedShip, String name, PositiveInteger shieldHP, PositiveInteger hullHP
-            , PositiveInteger capacitorAmount, PositiveInteger capacitorRechargeRate
-            , PositiveInteger speed, PositiveInteger size, AttackSubsystem attackSubsystem
-            , DefenciveSubsystem defenciveSubsystem) {
-        this.dockedShip = dockedShip;
-        this.combatReadyShip = CombatReadyShip.construct(this);
-        data = new CommonShipData(name, shieldHP, hullHP, capacitorAmount, capacitorRechargeRate, speed, size
-                , attackSubsystem, defenciveSubsystem);
-    }
+		public void setHullHP(PositiveInteger hullHP) {
+			this.hullHP = hullHP;
+		}
 
-    public void getBackToTheDock() {
-        combatReadyShip = null;
-    }
+		public void setCapacitorAmount(PositiveInteger capacitorAmount) {
+			this.capacitorAmount = capacitorAmount;
+		}
+
+		public PositiveInteger getDefaultCapacitorAmount() {
+			return this.defaultCapacitorAmount;
+		}
+
+		public void setSpeed(PositiveInteger speed) {
+			this.speed = speed;
+		}
+
+		public PositiveInteger getDefaultShieldHP() {
+			return this.defaultShieldHP;
+		}
+
+		public PositiveInteger getDefaultHullHP() {
+			return this.defaultHullHP;
+		}
+
+		public String getName() {
+			return this.name;
+		}
+
+		public PositiveInteger getShieldHP() {
+			return this.shieldHP;
+		}
+
+		public PositiveInteger getHullHP() {
+			return this.hullHP;
+		}
+
+		public PositiveInteger getCapacitorAmount() {
+			return this.capacitorAmount;
+		}
+
+		public PositiveInteger getCapacitorRechargeRate() {
+			return this.capacitorRechargeRate;
+		}
+
+		public PositiveInteger getSpeed() {
+			return this.speed;
+		}
+
+		public PositiveInteger getSize() {
+			return this.size;
+		}
+
+		public AttackSubsystem getAttackSubsystem() {
+			return this.attackSubsystem;
+		}
+
+		public DefenciveSubsystem getDefenciveSubsystem() {
+			return this.defenciveSubsystem;
+		}
+
+	}
+
+	public ShipWrapper(DockedShip dockedShip, String name, PositiveInteger shieldHP, PositiveInteger hullHP,
+			PositiveInteger capacitorAmount, PositiveInteger capacitorRechargeRate, PositiveInteger speed,
+			PositiveInteger size, AttackSubsystem attackSubsystem, DefenciveSubsystem defenciveSubsystem) {
+		this.dockedShip = dockedShip;
+		this.combatReadyShip = CombatReadyShip.construct(this);
+		this.data = new CommonShipData(name, shieldHP, hullHP, capacitorAmount, capacitorRechargeRate, speed, size,
+				attackSubsystem, defenciveSubsystem);
+	}
 
 }
