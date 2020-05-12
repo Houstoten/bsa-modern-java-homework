@@ -1,6 +1,6 @@
 package com.binary_studio.fleet_commander.core.common;
 
-public final class PositiveInteger {
+public final class PositiveInteger implements Comparable<PositiveInteger> {
 
 	private final Integer underlyingVal;
 
@@ -30,6 +30,11 @@ public final class PositiveInteger {
 	@Override
 	public int hashCode() {
 		return this.underlyingVal.hashCode();
+	}
+
+	@Override
+	public int compareTo(PositiveInteger positiveInteger) {
+		return this.underlyingVal.compareTo(positiveInteger.underlyingVal);
 	}
 
 }
