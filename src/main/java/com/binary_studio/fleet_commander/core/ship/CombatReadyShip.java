@@ -55,8 +55,8 @@ public final class CombatReadyShip implements CombatReadyVessel {
 
 	@Override
 	public Optional<AttackAction> attack(Attackable target) {
-		if (this.shipWrapper.getData().getAttackSubsystem().getCapacitorConsumption().value() <= this.shipWrapper
-				.getData().getCapacitorAmount().value()) {
+		if (this.shipWrapper.getData().getAttackSubsystem().getCapacitorConsumption()
+				.compareTo(this.shipWrapper.getData().getCapacitorAmount()) <= 0) {
 			this.shipWrapper.getData()
 					.setCapacitorAmount(PositiveInteger.of(this.shipWrapper.getData().getCapacitorAmount().value()
 							- this.shipWrapper.getData().getAttackSubsystem().getCapacitorConsumption().value()));
@@ -80,8 +80,8 @@ public final class CombatReadyShip implements CombatReadyVessel {
 
 	@Override
 	public Optional<RegenerateAction> regenerate() {
-		if (this.shipWrapper.getData().getCapacitorAmount().value() >= this.shipWrapper.getData()
-				.getDefenciveSubsystem().getCapacitorConsumption().value()) {
+		if (this.shipWrapper.getData().getCapacitorAmount()
+				.compareTo(this.shipWrapper.getData().getDefenciveSubsystem().getCapacitorConsumption()) >= 0) {
 
 			Optional<RegenerateAction> regenerateAction = Optional
 					.of(this.shipWrapper.getData().getDefenciveSubsystem().regenerate());

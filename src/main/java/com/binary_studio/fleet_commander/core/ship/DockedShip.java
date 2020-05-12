@@ -64,7 +64,7 @@ public final class DockedShip implements ModularVessel {
 			this.attackSubsystem = null;
 			return;
 		}
-		if (this.powergridOutput.value() >= subsystem.getPowerGridConsumption().value()) {
+		if (this.powergridOutput.compareTo(subsystem.getPowerGridConsumption()) >= 0) {
 			this.powergridOutput = PositiveInteger
 					.of(this.powergridOutput.value() - subsystem.getPowerGridConsumption().value());
 			this.attackSubsystem = subsystem;
@@ -84,7 +84,7 @@ public final class DockedShip implements ModularVessel {
 			this.defenciveSubsystem = null;
 			return;
 		}
-		if (this.powergridOutput.value() >= subsystem.getPowerGridConsumption().value()) {
+		if (this.powergridOutput.compareTo(subsystem.getPowerGridConsumption()) >= 0) {
 			this.powergridOutput = PositiveInteger
 					.of(this.powergridOutput.value() - subsystem.getPowerGridConsumption().value());
 			this.defenciveSubsystem = subsystem;
